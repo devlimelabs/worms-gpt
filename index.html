@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Burrow Brawl</title>
+    <style>
+      html, body { margin:0; height:100%; background:#0c0f14; overflow:hidden; }
+      #ui {
+        position:fixed; left:12px; top:10px; color:#e7f0ff;
+        font:14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        user-select:none; pointer-events:none;
+      }
+      .hud-row { margin-bottom:6px; }
+      .bar { width:220px; height:10px; background:#334; border-radius:4px; overflow:hidden; }
+      .fill { height:100%; width:0%; background:#7df; transition:width .06s linear; }
+      #windArrow { display:inline-block; transform-origin:center; }
+      #screenHud {
+        position:fixed; left:0; top:0; width:100%; height:100%;
+        pointer-events:none;
+      }
+      .health {
+        position:absolute; width:80px; height:8px; background:#273043;
+        border-radius:4px; transform:translate(-50%,-50%);
+      }
+      .health>.hp {
+        height:100%; width:100%; background:#6cf381;
+        transition:width .2s ease;
+      }
+      .dead { filter:grayscale(0.9) brightness(0.7); }
+      .toast {
+        position:fixed; left:50%; top:12%; transform:translateX(-50%);
+        color:#fff; font:24px/1.2 system-ui; letter-spacing:0.5px;
+        padding:6px 10px; background:rgba(0,0,0,.25); border-radius:6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <div class="hud-row">Team: <span id="team">A</span> &nbsp;|&nbsp; Angle: <span id="angle">0</span>°</div>
+      <div class="hud-row">
+        Wind: <span id="wind">0</span>
+        <span id="windArrow">🡆</span>
+      </div>
+      <div class="hud-row bar"><div class="fill" id="powerFill"></div></div>
+      <div class="hud-row"><small>Move: A/D or ←/→ &nbsp; Aim: mouse &nbsp; Fire: hold/release SPACE &nbsp; Reset: R</small></div>
+    </div>
+    <div id="screenHud"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
